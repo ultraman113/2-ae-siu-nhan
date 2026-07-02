@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kem & Đá Bào - Thương hiệu mát lạnh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <div class="logo" id="logo">
+                <i class="fas fa-ice-cream"></i>
+                <span>KemBào</span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" data-page="home" class="active">Trang chủ</a></li>
+                    <li><a href="#" data-page="products">Sản phẩm</a></li>
+                    <li><a href="#" data-page="cart">Giỏ hàng <span class="cart-badge" id="cartBadge">0</span></a></li>
+                    <li><a href="#" data-page="account">Tài khoản</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <span id="userGreeting" class="user-greeting"></span>
+                <a href="#" data-page="login" id="loginBtn" class="btn-login"><i class="fas fa-user"></i> Đăng nhập</a>
+                <a href="#" id="logoutBtn" class="btn-logout" style="display:none;"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="mainContent">
+
+        <!-- PAGE: HOME -->
+        <section id="page-home" class="page active">
+            <section class="banner">
+                <div class="container">
+                    <div class="banner-content">
+                        <h1>Mát lạnh mỗi ngày <br /> cùng <span>KemBào</span></h1>
+                        <p>Hương vị tươi mới từ những nguyên liệu thiên nhiên</p>
+                        <a href="#" data-page="products" class="btn btn-primary">Khám phá ngay</a>
+                    </div>
+                    <div class="banner-image">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section class="featured-products">
+                <div class="container">
+                    <h2 class="section-title">Sản phẩm nổi bật</h2>
+                    <div class="product-grid" id="featuredGrid"></div>
+                    <div class="text-center" style="margin-top: 30px;">
+                        <a href="#" data-page="products" class="btn btn-secondary">Xem tất cả sản phẩm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section">
+                <div class="container">
+                    <h2 class="section-title">Đội ngũ của chúng tôi</h2>
+                    <div class="team-grid" id="teamGrid"></div>
+                </div>
+            </section>
+        </section>
+
+        <!-- PAGE: PRODUCTS -->
+        <section id="page-products" class="page">
+            <div class="container">
+                <h2 class="section-title">Tất cả sản phẩm</h2>
+                <div class="product-toolbar">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." />
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="sort-box">
+                        <label for="sortSelect">Sắp xếp:</label>
+                        <select id="sortSelect">
+                            <option value="default">Mặc định</option>
+                            <option value="price-asc">Giá tăng dần</option>
+                            <option value="price-desc">Giá giảm dần</option>
+                            <option value="name-asc">Tên A → Z</option>
+                            <option value="name-desc">Tên Z → A</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="product-grid" id="productGrid"></div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: DETAIL -->
+        <section id="page-detail" class="page">
+            <div class="container">
+                <button class="btn-back" id="backFromDetail"><i class="fas fa-arrow-left"></i> Quay lại</button>
+                <div id="detailContent"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: CART -->
+        <section id="page-cart" class="page">
+            <div class="container">
+                <h2 class="section-title">Giỏ hàng của bạn</h2>
+                <div id="cartContent"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: CHECKOUT -->
+        <section id="page-checkout" class="page">
+            <div class="container">
+                <button class="btn-back" id="backFromCheckout"><i class="fas fa-arrow-left"></i> Quay lại giỏ hàng</button>
+                <h2 class="section-title">Thanh toán</h2>
+                <div id="checkoutContent"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: ACCOUNT -->
+        <section id="page-account" class="page">
+            <div class="container">
+                <h2 class="section-title">Tài khoản của tôi</h2>
+                <div id="accountContent"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: LOGIN / REGISTER -->
+        <section id="page-login" class="page">
+            <div class="container login-container">
+                <div class="login-box" id="loginBox">
+                    <h2><i class="fas fa-user-circle"></i> Đăng nhập</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="loginEmail" placeholder="Email đã đăng ký" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu</label>
+                            <input type="password" id="loginPassword" placeholder="Mật khẩu" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+                        <p class="form-switch">Chưa có tài khoản? <a href="#" id="switchToRegister">Đăng ký ngay</a></p>
+                        <div id="loginError" class="form-error"></div>
+                    </form>
+                </div>
+
+                <div class="login-box" id="registerBox" style="display:none;">
+                    <h2><i class="fas fa-user-plus"></i> Đăng ký</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label>Họ tên</label>
+                            <input type="text" id="regName" placeholder="Nguyễn Văn A" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="regEmail" placeholder="email@example.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Mật khẩu</label>
+                            <input type="password" id="regPassword" placeholder="Ít nhất 6 ký tự" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Ngày sinh</label>
+                            <input type="date" id="regDob" />
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" id="regAddress" placeholder="Số nhà, đường, thành phố" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+                        <p class="form-switch">Đã có tài khoản? <a href="#" id="switchToLogin">Đăng nhập ngay</a></p>
+                        <div id="registerError" class="form-error"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODALS -->
+        <div class="modal-overlay" id="memberModal">
+            <div class="modal-content">
+                <button class="modal-close" id="memberModalClose">&times;</button>
+                <div id="memberModalBody"></div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="avatarModal">
+            <div class="modal-content" style="max-width:400px;">
+                <button class="modal-close" id="avatarModalClose">&times;</button>
+                <h3>Đổi ảnh đại diện</h3>
+                <div style="text-align:center; margin:20px 0;">
+                    <img id="avatarPreview" src="" alt="Avatar preview" style="width:120px; height:120px; border-radius:50%; object-fit:cover; border:3px solid #f7a1b5;" />
+                </div>
+                <div class="form-group">
+                    <label>Nhập URL ảnh mới:</label>
+                    <input type="text" id="avatarUrlInput" placeholder="https://example.com/avatar.jpg" />
+                </div>
+                <button class="btn btn-primary btn-block" id="saveAvatarBtn">Cập nhật avatar</button>
+                <div id="avatarError" class="form-error"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4><i class="fas fa-ice-cream"></i> KemBào</h4>
+                <p>Mang hương vị mát lạnh đến mọi nhà với những sản phẩm kem và đá bào chất lượng cao.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/1c3uAtHgTG/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://youtube.com/@truongtrungcapcongnghiepbinhdu?si=4ViLpFXolyDXww-A" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <p><i class="fas fa-map-marker-alt"></i>DT 743, phường Bình Hoà, TP HCM</p>
+                <p><i class="fas fa-phone"></i>0986.612.423 - 0935.656.603</p>
+                <p><i class="fas fa-envelope"></i> info@kembao.com</p>
+                <p><i class="fas fa-clock"></i> 8:00 - 22:00 (T2-CN)</p>
+            </div>
+            <div class="footer-col">
+                <h4>Thành viên</h4>
+                <ul class="footer-team" id="footerTeam"></ul>
+            </div>
+        <div>
+                    <iframe
+            src="https://www.google.com/maps?q=Trường%20Trung%20cấp%20Công%20nghiệp%20Bình%20Dương&output=embed"
+      width="300"
+      height="200"
+      style="border:0;"
+      loading="lazy">
+        </iframe>
+        </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 KemBào. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
